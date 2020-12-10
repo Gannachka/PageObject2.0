@@ -18,24 +18,21 @@ public class ReluiProductPage extends AbstractPage {
     private WebElement addToCartButton;
 
     @FindBy ( xpath = "//div[@datatype=\"3\"]")
-    private WebElement lipstickColor;
+    private WebElement productcolorColor;
 
     public ReluiProductPage chooseColor() {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(lipstickColor))
+        waitForElementLocatedBy(driver,productcolorColor)
                 .click();
         return this;
     }
     public ReluiProductPage addToBag() {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(addButton))
+        waitForElementLocatedBy(driver,addButton)
                 .click();
         return this;
     }
     public ReluiBagPage goToBag() {
         WebElement goToCartButton = waitForElementLocatedBy( driver,addToCartButton);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(goToCartButton));
+        waitForElementLocatedBy(driver,goToCartButton);
         goToCartButton.click();
         return new ReluiBagPage(driver);
     }
