@@ -22,25 +22,27 @@ public class ReluiCollectioniPage extends AbstractPage {
     public ReluiCollectioniPage(WebDriver driver){
         super(driver);
     }
+    
     public ReluiCollectioniPage openPage() {
-
         driver.get(COLLECTION_URL);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(jQueryAJAXCompleted());
         return this;
-
     }
+    
     public ReluiCollectioniPage addToCart() {
         waitForElementLocatedBy(driver,addButton)
                 .click();
         return this;
     }
+    
     public ReluiBagPage goToCart() {
         WebElement goToCartButton = waitForElementLocatedBy( driver,goCartButton);
         waitForElementLocatedBy(driver,goToCartButton)
                             .click();
        return new ReluiBagPage(driver);
     }
+    
     public ReluiProductPage goToProduct(){
         WebElement goToCartButton = waitForElementLocatedBy(driver, addCartButton);
         waitForElementLocatedBy(driver,goToCartButton)
