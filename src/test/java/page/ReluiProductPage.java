@@ -6,10 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class ReluiProductPage extends AbstractPage {
-    public ReluiProductPage(WebDriver driver){
-        super(driver);
-    }
-    @FindBy(xpath = "//div[@datatype=\"4810438017961\"]")
+    
+     @FindBy(xpath = "//div[@datatype=\"4810438017961\"]")
     private WebElement addButton;
 
     @FindBy(linkText ="Перейти в корзину")
@@ -18,20 +16,26 @@ public class ReluiProductPage extends AbstractPage {
     @FindBy ( xpath = "//div[@datatype=\"3\"]")
     private WebElement productcolorColor;
 
+    public ReluiProductPage(WebDriver driver){
+        super(driver);
+    }
+       
     public ReluiProductPage chooseColor() {
         waitForElementLocatedBy(driver,productcolorColor)
                 .click();
         return this;
     }
+    
     public ReluiProductPage addToBag() {
         waitForElementLocatedBy(driver,addButton)
                 .click();
         return this;
     }
+    
     public ReluiBagPage goToBag() {
         WebElement goToCartButton = waitForElementLocatedBy( driver,addToCartButton);
-        waitForElementLocatedBy(driver,goToCartButton);
-        goToCartButton.click();
+        waitForElementLocatedBy(driver,goToCartButton)
+                .click();
         return new ReluiBagPage(driver);
     }
 }
