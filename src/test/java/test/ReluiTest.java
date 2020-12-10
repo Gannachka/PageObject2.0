@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import page.ReluiPage;
+import page.ReluiComplimentiPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,6 +18,7 @@ class ReluiTest {
 
     @BeforeAll
     static void BrowserSetup(){
+
         driver = new ChromeDriver();
     }
 
@@ -28,8 +29,8 @@ class ReluiTest {
     }
 
     @Test
-    void AddingItemsToCartTest(){
-        WebElement itemName = new ReluiPage(driver)
+    public void addingItemsToCartTest(){
+        WebElement itemName = new ReluiComplimentiPage(driver)
                 .openPage()
                 .addToCart()
                 .goToCart()
@@ -38,8 +39,8 @@ class ReluiTest {
     }
 
     @Test
-    void ChooseColorAndAddToCartTest(){
-        WebElement itemColor=new ReluiPage(driver)
+    public void сhooseColorAndAddToCartTest(){
+        WebElement itemColor=new ReluiComplimentiPage(driver)
                 .openPage()
                 .goToProduct()
                 .chooseColor()

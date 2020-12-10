@@ -1,17 +1,21 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class Page {
+public abstract class AbstractPage {
 
     protected WebDriver driver;
-    protected final int WAIT_TIMEOUT_SECONDS = 10;
+    protected final int WAIT_TIMEOUT_SECONDS = 30;
 
 
-    protected Page(WebDriver driver) {
+    protected AbstractPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -25,4 +29,9 @@ public abstract class Page {
             }
         };
     }
+    protected static WebElement waitForElementLocatedBy(WebDriver driver, WebElement element){
+        return new WebDriverWait(driver,30)
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
 }
