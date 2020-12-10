@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ReluiProductPage extends AbstractPage {
     
-     @FindBy(xpath = "//div[@datatype=\"4810438017961\"]")
+    @FindBy(xpath = "//div[@datatype=\"4810438017961\"]")
     private WebElement addButton;
 
     @FindBy(linkText ="Перейти в корзину")
@@ -38,4 +38,5 @@ public class ReluiProductPage extends AbstractPage {
                 .click();
         return new ReluiBagPage(driver);
     }
+    
 }
