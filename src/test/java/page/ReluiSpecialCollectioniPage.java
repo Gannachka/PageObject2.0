@@ -1,14 +1,13 @@
 package page;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ReluiCollectioniPage extends AbstractPage {
+public class ReluiSpecialCollectioniPage extends AbstractPage {
 
-    private static final String COLLECTION_URL = "https://relouis.by/collection/complimenti/";
+
 
     @FindBy(xpath = "//div[@datatype=\"4810438013055\"]")
     private WebElement addButton;
@@ -19,18 +18,11 @@ public class ReluiCollectioniPage extends AbstractPage {
     @FindBy (xpath="//*[@id='content']/descendant::a[@href='https://relouis.by/product/nude-matte-complimenti/'][ text()='Выбрать']")
     WebElement addCartButton;
 
-    public ReluiCollectioniPage(WebDriver driver){
+    public ReluiSpecialCollectioniPage(WebDriver driver){
         super(driver);
     }
-    public ReluiCollectioniPage openPage() {
 
-        driver.get(COLLECTION_URL);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(jQueryAJAXCompleted());
-        return this;
-
-    }
-    public ReluiCollectioniPage addToCart() {
+    public ReluiSpecialCollectioniPage addToCart() {
         waitForElementLocatedBy(driver,addButton)
                 .click();
         return this;

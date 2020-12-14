@@ -1,5 +1,6 @@
 package page;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,9 +12,7 @@ public class ReluiBagPage extends AbstractPage {
 
     @FindBy(xpath = "//div[@datatype=\\\"4810438013055\\\"]\"")
     private WebElement nameItem;
-
-    @FindBy ( xpath = "//div[@datatype=\"3\"]")
-    private WebElement productColor;
+    public static String COLOR_PATTERN ="//div[following-sibling::div[contains(text(),\"$\")]]";
 
     public ReluiBagPage (WebDriver driver){
         super(driver);
@@ -24,9 +23,13 @@ public class ReluiBagPage extends AbstractPage {
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@datatype=\"4810438013055\"]")));
     }
 
-    public WebElement getProductColor(){
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"cart-block\"]/descendant::div[ text()='Тон: 13']")));
+
+
+
+
+    public WebElement getProductColor(String color){
+       return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(COLOR_PATTERN.replace("$",color))));
     }
 
 

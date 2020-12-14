@@ -7,12 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import page.ReluiCollectioniPage;
+import page.ReluiMainPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ReluiTest {
+public class ReluiTest {
 
     private static WebDriver driver;
 
@@ -30,8 +29,10 @@ class ReluiTest {
 
     @Test
     public void addingItemsToCartTest(){
-        WebElement itemName = new ReluiCollectioniPage(driver)
+        WebElement itemName = new ReluiMainPage(driver)
                 .openPage()
+                .goToCollections()
+                .goToCollection()
                 .addToCart()
                 .goToCart()
                 .getNameOfFirstItem();
@@ -40,13 +41,15 @@ class ReluiTest {
 
     @Test
     public void сhooseColorAndAddToCartTest(){
-        WebElement itemColor=new ReluiCollectioniPage(driver)
+        WebElement itemColor=new ReluiMainPage(driver)
                 .openPage()
+                .goToCollections()
+                .goToCollection()
                 .goToProduct()
-                .chooseColor()
+                .chooseColor("13")
                 .addToBag()
                 .goToBag()
-                .getProductColor();
+                .getProductColor("13");
         assertTrue(itemColor.isDisplayed());
     }
 
